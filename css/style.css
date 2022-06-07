@@ -88,6 +88,13 @@ nav h1 {
   border-radius: 50%;
 }
 
+.controles input[type='button'] .arrow-up {
+  background-image: url('../assets/point-arrow-up.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
 .temporizador {
   padding: 0.1rem;
 }
