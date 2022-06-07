@@ -91,11 +91,17 @@ nav h1 {
   border-radius: 50%;
 
   background-color: var(--text-color);
+  opacity: 0.5;
 }
 
 .controles button img {
   width: 100%;
+  padding: 0.2rem;
 }
+
+/* .controles button svg g path {
+  fill: #219653;
+} */
 
 .temporizador {
   padding: 0.1rem;
