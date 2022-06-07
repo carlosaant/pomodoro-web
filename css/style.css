@@ -71,15 +71,15 @@ nav h1 {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
 .controles {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.1rem;
+  gap: 1rem;
+  padding-top: 1rem;
 }
 .controles button {
   width: 2.5rem;
@@ -104,7 +104,11 @@ nav h1 {
 } */
 
 .temporizador {
-  padding: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 .temporizador input[type='text'] {
   width: 9rem;
@@ -123,4 +127,11 @@ nav h1 {
 .temporizador input[type='text']:focus {
   /* box-shadow: 0 0 0 0; */
   outline: 0;
+}
+
+.temporizador span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  opacity: 0.8;
 }
