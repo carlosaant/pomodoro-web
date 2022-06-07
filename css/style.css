@@ -8,8 +8,9 @@
 
 :root {
   font-size: 62.5%;
-  --primary-color: #3c4262;
-  --secondary-color: #acaebd;
+  --primary-color: #333853;
+  --secondary-color: #3c4262;
+  --text-color: #acaebd;
   --green-color: #219653;
   --yellow-color: #f2c94c;
   --font-fam-rob: 'Roboto', sans-serif;
@@ -49,7 +50,7 @@ nav h1 {
   text-align: center;
   /* filter: brightness(2); */
 
-  color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 #opcoes {
@@ -92,6 +93,19 @@ nav h1 {
 }
 .temporizador input[type='text'] {
   width: 9rem;
-  height: 9rem;
+  height: 8rem;
   border: none;
+  border-radius: 10px;
+  text-align: center;
+
+  font-size: 4rem;
+  color: var(--text-color);
+
+  background-color: var(--secondary-color);
+  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.5);
+}
+.temporizador input[type='text']:focus {
+  /* box-shadow: 0 0 0 0; */
+  outline: 0;
 }
