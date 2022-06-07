@@ -81,18 +81,22 @@ nav h1 {
   gap: 0.5rem;
   padding: 0.1rem;
 }
-.controles input[type='button'] {
+.controles button {
   width: 2.5rem;
   height: 2.5rem;
   border: none;
   border-radius: 50%;
+
+  background-color: var(--secondary-color);
+  filter: brightness(1.2);
 }
 
-.controles input[type='button'] .arrow-up {
-  background-image: url('../assets/point-arrow-up.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100%;
+.controles button img {
+  width: 100%;
+}
+
+.controles button img svg g {
+  fill: var(--primary-color);
 }
 
 .temporizador {
