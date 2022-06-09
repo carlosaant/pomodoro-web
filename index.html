@@ -18,7 +18,7 @@
     <section id="opcoes">
       <div class="wrapper">
         <div class="opcoes-pomodoro">
-          <div id="op_trabalho" class="opcao-pomodoro">
+          <div class="opcao-pomodoro">
             <div class="controles">
               <button onclick="incrementPom(this)">
                 <img src="./assets/arrow-up.svg" alt="Aumentar" />
@@ -28,13 +28,13 @@
               </button>
             </div>
             <div class="temporizador">
-              <input type="number" name="" id="" />
+              <input type="number" name="" id="tempo_trabalho" />
               <span>Trabalho</span>
             </div>
           </div>
           <div class="opcao-pomodoro">
             <div class="controles">
-              <button>
+              <button onclick="incrementPom(this)">
                 <img src="./assets/arrow-up.svg" alt="Aumentar" />
               </button>
               <button>
@@ -42,13 +42,13 @@
               </button>
             </div>
             <div class="temporizador">
-              <input type="number" name="" id="" />
+              <input type="number" name="" id="tempo_pausa" />
               <span>Pausa</span>
             </div>
           </div>
           <div class="opcao-pomodoro">
             <div class="controles">
-              <button>
+              <button onclick="incrementPom(this)">
                 <img src="./assets/arrow-up.svg" alt="Aumentar" />
               </button>
               <button>
@@ -56,7 +56,7 @@
               </button>
             </div>
             <div class="temporizador">
-              <input type="number" name="" id="" />
+              <input type="number" name="" id="tempo_sessao" />
               <span>Sessões</span>
             </div>
           </div>
