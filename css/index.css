@@ -1,0 +1,129 @@
+#opcoes {
+  padding-block: 0.5rem;
+}
+
+#opcoes .opcoes-pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+  padding-block: 1.5rem;
+}
+
+#opcoes .opcao-pomodoro {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.controles {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.controles button {
+  width: 2.5rem;
+  height: 2.5rem;
+
+  padding: 0.3rem;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: var(--text-color);
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+.controles button:hover {
+  opacity: 1;
+}
+.controles button:active {
+  filter: brightness(1.3);
+}
+
+.controles button img {
+  width: 100%;
+  padding: 0.2rem;
+}
+
+/* .controles button svg g path {
+  fill: #219653;
+} */
+
+.temporizador {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* remover aparencia padrao do input type number */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.temporizador input[type='number'] {
+  width: 9rem;
+  height: 8rem;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+
+  font-size: 4rem;
+  color: var(--text-color);
+
+  background-color: var(--secondary-color);
+  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.5);
+}
+.temporizador input[type='number']:focus {
+  /* box-shadow: 0 0 0 0; */
+  outline: 0;
+}
+
+.temporizador span {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.btn-continuar {
+  padding-block: 1.8rem;
+  padding-inline: 5rem;
+
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.5);
+
+  opacity: 0.8;
+  transition: all 0.5s;
+}
+.btn-continuar:hover {
+  opacity: 1;
+  padding-inline: 4.5rem;
+}
+
+.btn-continuar a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+.btn-continuar a:active {
+  text-decoration: none;
+}
