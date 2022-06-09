@@ -29,3 +29,40 @@ header ul li a {
   align-items: center;
   justify-content: center;
 }
+
+#pomo .mostrador {
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+#pomo .mostrador .mostrador-content {
+  width: 17rem;
+  height: 17rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+}
+
+#pomo .mostrador .mostrador-content span {
+  font-size: 5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.mostrador-color-green {
+  border: 0.5rem solid var(--green-color);
+}
+.mostrador-color-yellow {
+  border: 0.5rem solid var(--yellow-color);
+}
