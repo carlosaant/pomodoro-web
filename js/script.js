@@ -44,3 +44,24 @@ function incrementPom(elem) {
     }
   }
 }
+
+function decrementPom(elem) {
+  const elementoPai = elem.parentNode.parentNode;
+  const elementoTemporizador = elementoPai.children[1].children[0];
+  if (elementoTemporizador.id === campo_mostrador_trabalho.id) {
+    const valueDoElemento = parseInt(elementoTemporizador.value);
+    if (valueDoElemento > 5) {
+      elementoTemporizador.value = valueDoElemento - incremento_trabalho;
+    }
+  } else if (elementoTemporizador.id === campo_mostrador_pausa.id) {
+    const valueDoElemento = parseInt(elementoTemporizador.value);
+    if (valueDoElemento > 0) {
+      elementoTemporizador.value = valueDoElemento - incremento_pausa;
+    }
+  } else if (elementoTemporizador.id === campo_mostrador_sessoes.id) {
+    const valueDoElemento = parseInt(elementoTemporizador.value);
+    if (valueDoElemento > 0) {
+      elementoTemporizador.value = valueDoElemento - incremento_sessoes;
+    }
+  }
+}
