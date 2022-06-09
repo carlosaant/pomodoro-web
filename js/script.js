@@ -65,3 +65,30 @@ function decrementPom(elem) {
     }
   }
 }
+
+campo_mostrador_trabalho.onchange = function () {
+  if (parseInt(campo_mostrador_trabalho.value) > limite_minutos_trabalho) {
+    campo_mostrador_trabalho.value = limite_minutos_trabalho;
+  }
+  if (parseInt(campo_mostrador_trabalho.value) < 0) {
+    campo_mostrador_trabalho.value = temp_trabalho;
+  }
+};
+
+campo_mostrador_pausa.onchange = function () {
+  if (parseInt(campo_mostrador_pausa.value) > limite_minutos_pausa) {
+    campo_mostrador_pausa.value = limite_minutos_pausa;
+  }
+  if (parseInt(campo_mostrador_pausa.value) < 0) {
+    campo_mostrador_pausa.value = temp_pausa;
+  }
+};
+
+campo_mostrador_sessoes.onchange = function () {
+  if (parseInt(campo_mostrador_sessoes.value) > limite_sessoes) {
+    campo_mostrador_sessoes.value = limite_sessoes;
+  }
+  if (parseInt(campo_mostrador_sessoes.value) < 0) {
+    campo_mostrador_sessoes.value = temp_sessoes;
+  }
+};
