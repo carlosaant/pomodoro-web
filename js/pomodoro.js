@@ -24,18 +24,21 @@ onload = function () {
 
 function iniciarPom() {
   timeInterval = setInterval(timerExibe(_pomofoco), 1000);
+  console.log(timeInterval);
 }
 
 function timerExibe(_pomo_mostrador) {
-  decrementaTimer(_pomo_mostrador);
-  mostrador_pomo.textContent =
-    (_pomo_mostrador.min >= 10
-      ? _pomo_mostrador.min
-      : '0' + _pomo_mostrador.min) +
-    ':' +
-    (_pomo_mostrador.seg >= 10
-      ? _pomo_mostrador.seg
-      : '0' + _pomo_mostrador.seg);
+  return function () {
+    decrementaTimer(_pomo_mostrador);
+    mostrador_pomo.textContent =
+      (_pomo_mostrador.min >= 10
+        ? _pomo_mostrador.min
+        : '0' + _pomo_mostrador.min) +
+      ':' +
+      (_pomo_mostrador.seg >= 10
+        ? _pomo_mostrador.seg
+        : '0' + _pomo_mostrador.seg);
+  };
 }
 
 function decrementaTimer(_pomo_mostrador) {
