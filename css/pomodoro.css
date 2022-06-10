@@ -73,3 +73,19 @@ header ul li a {
   font-weight: 600;
   color: var(--green-color);
 }
+
+#pomo .sessoes {
+  padding-block: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+#pomo .sessoes span {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--secondary-color);
+  border: 1px solid transparent;
+  border-radius: 50%;
+}
