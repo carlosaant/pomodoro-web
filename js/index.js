@@ -99,4 +99,9 @@ campo_mostrador_sessoes.onchange = function () {
   }
 };
 
-function salvarDados() {}
+function salvarDados() {
+  _pomodoro_app.temp_foco = campo_mostrador_foco.value;
+  _pomodoro_app.temp_pausa = campo_mostrador_pausa.value;
+  _pomodoro_app.temp_sessoes = campo_mostrador_sessoes.value;
+  localStorage.setItem('configPomo', JSON.stringify(_pomodoro_app));
+}

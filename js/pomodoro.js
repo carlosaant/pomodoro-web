@@ -5,15 +5,17 @@ const mostrador_pomo = document.getElementById('mostrador_time');
 const titulo_pomo = document.getElementById('titulo_mostrador');
 const btn_acao = document.getElementById('btn_acao');
 //
+let _pomodoro_app = JSON.parse(localStorage.getItem('configPomo'));
+
 let timeInterval;
 let _pomofoco = {
   seg: 0,
-  min: 25
+  min: _pomodoro_app.temp_foco
 };
 
 let _pomopausa = {
   seg: 0,
-  min: 0
+  min: _pomodoro_app.temp_pausa
 };
 
 onload = function () {
