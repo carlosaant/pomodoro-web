@@ -8,16 +8,24 @@ const btn_acao = document.getElementById('btn_acao');
 // let _pomodoro_app = JSON.parse(localStorage.getItem('configPomo'));
 
 let timeInterval;
-let _pomofoco = {
-  seg: 0,
-  min: JSON.parse(localStorage.getItem('configPomo')).temp_foco,
-  active: false
-};
-
-let _pomopausa = {
-  seg: 0,
-  min: JSON.parse(localStorage.getItem('configPomo')).temp_pausa,
-  active: false
+let _pomodoro = {
+  _pomofoco: {
+    seg: 0,
+    min: localStorage.getItem('configPomo')
+      ? JSON.parse(localStorage.getItem('configPomo')).temp_foco
+      : 25,
+    active: false
+  },
+  _pomopausa: {
+    seg: 0,
+    min: localStorage.getItem('configPomo')
+      ? JSON.parse(localStorage.getItem('configPomo')).temp_pausa
+      : 5,
+    active: false
+  },
+  _pomosessoes: localStorage.getItem('configPomo')
+    ? JSON.parse(localStorage.getItem('configPomo')).temp_sessoes
+    : 25
 };
 
 // ----------------
@@ -28,27 +36,27 @@ onload = function () {
 
 function setFocoModo() {
   setColors('foco');
-  renderizaTimerTela(_pomofoco);
+  renderizaTimerTela(_pomodoro._pomofoco);
   btn_acao.addEventListener('click', iniciarFocoPomodoro);
 }
 
 function setPausaModo() {
   setColors('pausa');
-  renderizaTimerTela(_pomopausa);
+  renderizaTimerTela(_pomodoro._pomopausa);
   btn_acao.addEventListener('click', iniciarPausaPomodoro);
 }
 
 // ------------
 
 function iniciarFocoPomodoro() {
-  if (!_pomofoco.active) {
+  if (!_pomodoro._pomofoco.active) {
     _pomofoco.active = true;
     timeInterval = setInterval(timerExibe(_pomofoco), 1000);
   }
 }
 
 function iniciarPausaPomodoro() {
-  if (!_pomopausa.active) {
+  if (!_pomodoro._pomopausa.active) {
     _pomopausa.active = true;
     timeInterval = setInterval(timerExibe(_pomopausa), 1000);
   }
