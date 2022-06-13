@@ -23,10 +23,20 @@ let _pomopausa = {
 // ----------------
 onload = function () {
   // timer inicial ao carregar a pagina
-  renderizaTimerTela(_pomofoco);
-
-  btn_acao.addEventListener('click', iniciarFocoPomodoro);
+  setFocoModo();
 };
+
+function setFocoModo() {
+  setColors('foco');
+  renderizaTimerTela(_pomofoco);
+  btn_acao.addEventListener('click', iniciarFocoPomodoro);
+}
+
+function setPausaModo() {
+  setColors('pausa');
+  renderizaTimerTela(_pomopausa);
+  btn_acao.addEventListener('click', iniciarPausaPomodoro);
+}
 
 // ------------
 
@@ -70,4 +80,24 @@ function decrementaTimer(_pomo_mostrador) {
     _pomo_mostrador.seg = 59;
     _pomo_mostrador.min--;
   } else _pomo_mostrador.seg--;
+}
+
+//------- funcoes de apoio
+
+function setColors(tipo) {
+  if (tipo === 'foco') {
+    document
+      .querySelector('.mostrador-content')
+      .classList.remove('mostrador-color-yellow');
+    document
+      .querySelector('.mostrador-content')
+      .classList.add('mostrador-color-green');
+  } else {
+    document
+      .querySelector('.mostrador-content')
+      .classList.remove('mostrador-color-green');
+    document
+      .querySelector('.mostrador-content')
+      .classList.add('mostrador-color-yellow');
+  }
 }
