@@ -10,12 +10,14 @@ const btn_acao = document.getElementById('btn_acao');
 let timeInterval;
 let _pomofoco = {
   seg: 0,
-  min: JSON.parse(localStorage.getItem('configPomo')).temp_foco
+  min: JSON.parse(localStorage.getItem('configPomo')).temp_foco,
+  active: false
 };
 
 let _pomopausa = {
   seg: 0,
-  min: JSON.parse(localStorage.getItem('configPomo')).temp_pausa
+  min: JSON.parse(localStorage.getItem('configPomo')).temp_pausa,
+  active: false
 };
 
 // ----------------
@@ -23,14 +25,23 @@ onload = function () {
   // timer inicial ao carregar a pagina
   renderizaTimerTela(_pomofoco);
 
-  btn_acao.addEventListener('click', iniciarPom);
+  btn_acao.addEventListener('click', iniciarFocoPomodoro);
 };
 
 // ------------
 
-function iniciarPom() {
-  timeInterval = setInterval(timerExibe(_pomofoco), 1000);
-  console.log(timeInterval);
+function iniciarFocoPomodoro() {
+  if (!_pomofoco.active) {
+    _pomofoco.active = true;
+    timeInterval = setInterval(timerExibe(_pomofoco), 1000);
+  }
+}
+
+function iniciarPausaPomodoro() {
+  if (!_pomopausa.active) {
+    _pomopausa.active = true;
+    timeInterval = setInterval(timerExibe(_pomopausa), 1000);
+  }
 }
 
 function timerExibe(_pomo_mostrador) {
