@@ -93,19 +93,19 @@ function decrementaTimer(_pomo_mostrador) {
 //------- funcoes de apoio
 
 function setColors(tipo) {
+  const titulo_mostrador = document.getElementById('titulo_mostrador');
+  const mostrador_content = document.querySelector('.mostrador-content');
   if (tipo === 'foco') {
-    document
-      .querySelector('.mostrador-content')
-      .classList.remove('mostrador-color-yellow');
-    document
-      .querySelector('.mostrador-content')
-      .classList.add('mostrador-color-green');
+    titulo_mostrador.classList.remove('pausaactive');
+    titulo_mostrador.classList.add('focoactive');
+    titulo_mostrador.textContent = 'Foco';
+    mostrador_content.classList.remove('mostrador-color-yellow');
+    mostrador_content.classList.add('mostrador-color-green');
   } else {
-    document
-      .querySelector('.mostrador-content')
-      .classList.remove('mostrador-color-green');
-    document
-      .querySelector('.mostrador-content')
-      .classList.add('mostrador-color-yellow');
+    titulo_mostrador.classList.remove('focoactive');
+    titulo_mostrador.classList.add('pausaactive');
+    titulo_mostrador.textContent = 'Pausa';
+    mostrador_content.classList.remove('mostrador-color-green');
+    mostrador_content.classList.add('mostrador-color-yellow');
   }
 }

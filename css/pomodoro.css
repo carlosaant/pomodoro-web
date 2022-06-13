@@ -76,7 +76,14 @@ header ul li a {
   padding-top: 1rem;
   font-size: 4rem;
   font-weight: 600;
+  color: var(--secondary-color);
+}
+
+#pomo .pomocontent h2.focoactive {
   color: var(--green-color);
+}
+#pomo .pomocontent h2.pausaactive {
+  color: var(--yellow-color);
 }
 
 #pomo .sessoes {
