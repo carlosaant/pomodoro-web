@@ -61,11 +61,10 @@ function iniciarFocoPomodoro() {
   if (_pomodoro._pomosessoes._sessoes_ativas > 0) {
     if (!_pomodoro._pomofoco.active) {
       _pomodoro._pomofoco.active = true;
-      // _pomodoro._pomopausa.active = false;
       // serializando e deserializando o _pomodoro._pomofoco para passar apenas o valor, e nao alterar o objeto em si
       timeInterval = setInterval(
         timerExibe(JSON.parse(JSON.stringify(_pomodoro._pomofoco)), 'foco'),
-        100
+        1000
       );
     }
   } else {
@@ -79,7 +78,7 @@ function iniciarPausaPomodoro() {
     // _pomodoro._pomofoco.active = false;
     timeInterval = setInterval(
       timerExibe(JSON.parse(JSON.stringify(_pomodoro._pomopausa)), 'pausa'),
-      100
+      1000
     );
   }
 }
