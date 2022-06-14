@@ -66,7 +66,7 @@ function decrementPom(elem) {
     }
   } else if (elementoTemporizador.id === campo_mostrador_sessoes.id) {
     const valueDoElemento = parseInt(elementoTemporizador.value);
-    if (valueDoElemento > 0) {
+    if (valueDoElemento > 1) {
       elementoTemporizador.value = valueDoElemento - incremento_sessoes;
     }
   }
@@ -94,7 +94,7 @@ campo_mostrador_sessoes.onchange = function () {
   if (parseInt(campo_mostrador_sessoes.value) > limite_sessoes) {
     campo_mostrador_sessoes.value = limite_sessoes;
   }
-  if (parseInt(campo_mostrador_sessoes.value) < 0) {
+  if (parseInt(campo_mostrador_sessoes.value) < 1) {
     campo_mostrador_sessoes.value = _pomodoro_app.temp_sessoes;
   }
 };
