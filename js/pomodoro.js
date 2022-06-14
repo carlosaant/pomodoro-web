@@ -24,9 +24,15 @@ let _pomodoro = {
       : 5,
     active: false
   },
-  _pomosessoes: localStorage.getItem('configPomo')
-    ? parseInt(JSON.parse(localStorage.getItem('configPomo')).temp_sessoes)
-    : 3
+  _pomosessoes: {
+    qnt_sessoes: localStorage.getItem('configPomo')
+      ? parseInt(JSON.parse(localStorage.getItem('configPomo')).temp_sessoes)
+      : 3,
+    _sessoes_ativas: localStorage.getItem('configPomo')
+      ? parseInt(JSON.parse(localStorage.getItem('configPomo')).temp_sessoes)
+      : 3,
+    _sessoes: gerarSessoes
+  }
 };
 
 // ----------------
@@ -52,7 +58,7 @@ function setPausaModo() {
 // ------------
 
 function iniciarFocoPomodoro() {
-  if (_pomodoro._pomosessoes > 0) {
+  if (_pomodoro._pomosessoes._sessoes_ativas > 0) {
     if (!_pomodoro._pomofoco.active) {
       _pomodoro._pomofoco.active = true;
       // _pomodoro._pomopausa.active = false;
@@ -89,7 +95,7 @@ function timerExibe(_pomo_mostrador, tipo) {
         setPausaModo();
       } else if (tipo === 'pausa') {
         _pomodoro._pomopausa.active = false;
-        _pomodoro._pomosessoes -= 1;
+        _pomodoro._pomosessoes._sessoes_ativas -= 1;
         console.log(_pomodoro._pomosessoes);
         setFocoModo();
       }
@@ -139,37 +145,32 @@ function setColors(tipo) {
 
 function contadorSessoes(tipo) {
   sessoes_pomo.innerHTML = '';
-  for (let index = 0; index < _pomodoro._pomosessoes; index++) {
-    const spn_sessao = document.createElement('span');
-    if (tipo === 'foco') {
-      spn_sessao.classList.remove('activepausa');
-      spn_sessao.classList.add('activefoco');
-    } else {
-      spn_sessao.classList.remove('activefoco');
-      spn_sessao.classList.add('activepausa');
+  const _sessoes_pomo = _pomodoro._pomosessoes._sessoes();
+  for (let index = 0; index < _sessoes_pomo.length; index++) {
+    if (_sessoes_pomo[index].sessao_ativa) {
+      if (tipo === 'foco') {
+        _sessoes_pomo[index].sessao_item.classList.remove('activepausa');
+        _sessoes_pomo[index].sessao_item.classList.add('activefoco');
+      } else {
+        _sessoes_pomo[index].sessao_item.classList.remove('activefoco');
+        _sessoes_pomo[index].sessao_item.classList.add('activepausa');
+      }
     }
-    sessoes_pomo.appendChild(spn_sessao);
+    sessoes_pomo.appendChild(_sessoes_pomo[index].sessao_item);
   }
 }
 
 function gerarSessoes() {
   let _sessoes_pomo = [];
-  for (let index = 0; index < _pomodoro._pomosessoes; index++) {
+  for (let index = 0; index < _pomodoro._pomosessoes.qnt_sessoes; index++) {
     const spn_sessao = document.createElement('span');
     _sessoes_pomo.push({
       sessao_item: spn_sessao,
-      sessao_ativa: true
+      sessao_ativa: false
     });
   }
-  return _sessoes_pomo;
-}
-
-function contadorSessoesAtivas() {
-  let _sessoes_ativas = 0;
-  for (let index = 0; index < _pomodoro._pomosessoes; index++) {
-    if (_pomodoro._pomosessoes[index].sessao_ativa) {
-      _sessoes_ativas++;
-    }
+  for (let index = 0; index < _pomodoro._pomosessoes._sessoes_ativas; index++) {
+    _sessoes_pomo[index].sessao_ativa = true;
   }
-  return _sessoes_ativas;
+  return _sessoes_pomo;
 }
