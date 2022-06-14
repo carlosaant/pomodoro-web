@@ -86,7 +86,6 @@ function iniciarPausaPomodoro() {
 
 function timerExibe(_pomo_mostrador, tipo) {
   return function () {
-    decrementaTimer(_pomo_mostrador);
     renderizaTimerTela(_pomo_mostrador);
     if (_pomo_mostrador.seg === 0 && _pomo_mostrador.min === 0) {
       clearInterval(timeInterval);
@@ -96,10 +95,10 @@ function timerExibe(_pomo_mostrador, tipo) {
       } else if (tipo === 'pausa') {
         _pomodoro._pomopausa.active = false;
         _pomodoro._pomosessoes._sessoes_ativas -= 1;
-        console.log(_pomodoro._pomosessoes);
         setFocoModo();
       }
     }
+    decrementaTimer(_pomo_mostrador);
   };
 }
 
