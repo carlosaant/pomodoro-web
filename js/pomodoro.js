@@ -3,6 +3,7 @@
 // ----- elementos
 const mostrador_pomo = document.getElementById('mostrador_time');
 const titulo_pomo = document.getElementById('titulo_mostrador');
+const sessoes_pomo = document.getElementById('sessoes_pomo');
 const btn_acao = document.getElementById('btn_acao');
 //
 // let _pomodoro_app = JSON.parse(localStorage.getItem('configPomo'));
@@ -125,11 +126,50 @@ function setColors(tipo) {
     titulo_mostrador.textContent = 'Foco';
     mostrador_content.classList.remove('mostrador-color-yellow');
     mostrador_content.classList.add('mostrador-color-green');
+    contadorSessoes(tipo);
   } else {
     titulo_mostrador.classList.remove('focoactive');
     titulo_mostrador.classList.add('pausaactive');
     titulo_mostrador.textContent = 'Pausa';
     mostrador_content.classList.remove('mostrador-color-green');
     mostrador_content.classList.add('mostrador-color-yellow');
+    contadorSessoes(tipo);
   }
+}
+
+function contadorSessoes(tipo) {
+  sessoes_pomo.innerHTML = '';
+  for (let index = 0; index < _pomodoro._pomosessoes; index++) {
+    const spn_sessao = document.createElement('span');
+    if (tipo === 'foco') {
+      spn_sessao.classList.remove('activepausa');
+      spn_sessao.classList.add('activefoco');
+    } else {
+      spn_sessao.classList.remove('activefoco');
+      spn_sessao.classList.add('activepausa');
+    }
+    sessoes_pomo.appendChild(spn_sessao);
+  }
+}
+
+function gerarSessoes() {
+  let _sessoes_pomo = [];
+  for (let index = 0; index < _pomodoro._pomosessoes; index++) {
+    const spn_sessao = document.createElement('span');
+    _sessoes_pomo.push({
+      sessao_item: spn_sessao,
+      sessao_ativa: true
+    });
+  }
+  return _sessoes_pomo;
+}
+
+function contadorSessoesAtivas() {
+  let _sessoes_ativas = 0;
+  for (let index = 0; index < _pomodoro._pomosessoes; index++) {
+    if (_pomodoro._pomosessoes[index].sessao_ativa) {
+      _sessoes_ativas++;
+    }
+  }
+  return _sessoes_ativas;
 }

@@ -102,6 +102,13 @@ header ul li a {
   border-radius: 50%;
 }
 
+#pomo .sessoes span.activefoco {
+  background-color: var(--green-color);
+}
+#pomo .sessoes span.activepausa {
+  background-color: var(--yellow-color);
+}
+
 #pomo .btn-acao {
   padding-block: 2rem;
   padding-inline: 3rem;
