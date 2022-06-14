@@ -25,7 +25,7 @@ let _pomodoro = {
   },
   _pomosessoes: localStorage.getItem('configPomo')
     ? JSON.parse(localStorage.getItem('configPomo')).temp_sessoes
-    : 25
+    : 3
 };
 
 // ----------------
@@ -37,12 +37,14 @@ onload = function () {
 function setFocoModo() {
   setColors('foco');
   renderizaTimerTela(_pomodoro._pomofoco);
+  btn_acao.removeEventListener('click', iniciarPausaPomodoro);
   btn_acao.addEventListener('click', iniciarFocoPomodoro);
 }
 
 function setPausaModo() {
   setColors('pausa');
   renderizaTimerTela(_pomodoro._pomopausa);
+  btn_acao.removeEventListener('click', iniciarFocoPomodoro);
   btn_acao.addEventListener('click', iniciarPausaPomodoro);
 }
 
@@ -52,7 +54,7 @@ function iniciarFocoPomodoro() {
   if (_pomodoro._pomosessoes > 0) {
     if (!_pomodoro._pomofoco.active) {
       _pomodoro._pomofoco.active = true;
-      _pomodoro._pomopausa.active = false;
+      // _pomodoro._pomopausa.active = false;
       // serializando e deserializando o _pomodoro._pomofoco para passar apenas o valor, e nao alterar o objeto em si
       timeInterval = setInterval(
         timerExibe(JSON.parse(JSON.stringify(_pomodoro._pomofoco)), 'foco'),
@@ -67,8 +69,7 @@ function iniciarFocoPomodoro() {
 function iniciarPausaPomodoro() {
   if (!_pomodoro._pomopausa.active) {
     _pomodoro._pomopausa.active = true;
-    _pomodoro._pomofoco.active = false;
-    _pomodoro._pomosessoes -= 1;
+    // _pomodoro._pomofoco.active = false;
     timeInterval = setInterval(
       timerExibe(JSON.parse(JSON.stringify(_pomodoro._pomopausa)), 'pausa'),
       100
@@ -81,10 +82,14 @@ function timerExibe(_pomo_mostrador, tipo) {
     decrementaTimer(_pomo_mostrador);
     renderizaTimerTela(_pomo_mostrador);
     if (_pomo_mostrador.seg === 0 && _pomo_mostrador.min === 0) {
+      console.log('entrou no if - timeinterval: ' + timeInterval);
       clearInterval(timeInterval);
       if (tipo === 'foco') {
+        _pomodoro._pomofoco.active = false;
         setPausaModo();
-      } else {
+      } else if (tipo === 'pausa') {
+        _pomodoro._pomopausa.active = false;
+        _pomodoro._pomosessoes -= 1;
         setFocoModo();
       }
     }
@@ -107,7 +112,6 @@ function decrementaTimer(_pomo_mostrador) {
     _pomo_mostrador.seg = 59;
     _pomo_mostrador.min--;
   } else _pomo_mostrador.seg--;
-  console.log(_pomo_mostrador);
 }
 
 //------- funcoes de apoio
