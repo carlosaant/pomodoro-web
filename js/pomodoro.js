@@ -12,19 +12,19 @@ let _pomodoro = {
   _pomofoco: {
     seg: 0,
     min: localStorage.getItem('configPomo')
-      ? JSON.parse(localStorage.getItem('configPomo')).temp_foco
+      ? parseInt(JSON.parse(localStorage.getItem('configPomo')).temp_foco)
       : 25,
     active: false
   },
   _pomopausa: {
     seg: 0,
     min: localStorage.getItem('configPomo')
-      ? JSON.parse(localStorage.getItem('configPomo')).temp_pausa
+      ? parseInt(JSON.parse(localStorage.getItem('configPomo')).temp_pausa)
       : 5,
     active: false
   },
   _pomosessoes: localStorage.getItem('configPomo')
-    ? JSON.parse(localStorage.getItem('configPomo')).temp_sessoes
+    ? parseInt(JSON.parse(localStorage.getItem('configPomo')).temp_sessoes)
     : 3
 };
 
@@ -82,7 +82,6 @@ function timerExibe(_pomo_mostrador, tipo) {
     decrementaTimer(_pomo_mostrador);
     renderizaTimerTela(_pomo_mostrador);
     if (_pomo_mostrador.seg === 0 && _pomo_mostrador.min === 0) {
-      console.log('entrou no if - timeinterval: ' + timeInterval);
       clearInterval(timeInterval);
       if (tipo === 'foco') {
         _pomodoro._pomofoco.active = false;
@@ -90,6 +89,7 @@ function timerExibe(_pomo_mostrador, tipo) {
       } else if (tipo === 'pausa') {
         _pomodoro._pomopausa.active = false;
         _pomodoro._pomosessoes -= 1;
+        console.log(_pomodoro._pomosessoes);
         setFocoModo();
       }
     }
