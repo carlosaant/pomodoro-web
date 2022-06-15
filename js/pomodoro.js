@@ -60,6 +60,7 @@ function setPausaModo() {
 function iniciarFocoPomodoro() {
   if (_pomodoro._pomosessoes._sessoes_ativas > 0) {
     if (!_pomodoro._pomofoco.active) {
+      mudarButtonAcao('foco');
       _pomodoro._pomofoco.active = true;
       // serializando e deserializando o _pomodoro._pomofoco para passar apenas o valor, e nao alterar o objeto em si
       timeInterval = setInterval(
@@ -74,6 +75,7 @@ function iniciarFocoPomodoro() {
 
 function iniciarPausaPomodoro() {
   if (!_pomodoro._pomopausa.active) {
+    mudarButtonAcao('pausa');
     _pomodoro._pomopausa.active = true;
     // _pomodoro._pomofoco.active = false;
     timeInterval = setInterval(
@@ -171,4 +173,12 @@ function gerarSessoes() {
     _sessoes_pomo[index].sessao_ativa = true;
   }
   return _sessoes_pomo;
+}
+
+function mudarButtonAcao(tipo) {
+  if (tipo === 'foco') {
+    btn_acao.children[0].setAttribute('src', './assets/pause-media.png');
+  } else {
+    btn_acao.children[0].setAttribute('src', './assets/play-media.png');
+  }
 }
