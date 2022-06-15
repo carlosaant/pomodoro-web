@@ -22,6 +22,11 @@ header ul li a {
   font-weight: 600;
   text-decoration: none;
   color: var(--text-color);
+
+  transition: all 0.5s;
+}
+header ul li a:hover {
+  padding-inline: 3rem;
 }
 
 #pomo .pomocontent {
