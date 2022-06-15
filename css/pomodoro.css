@@ -23,7 +23,7 @@ header ul li a {
   text-decoration: none;
   color: var(--text-color);
 
-  transition: all 0.5s;
+  transition: padding 0.5s;
 }
 header ul li a:hover {
   padding-inline: 3rem;
