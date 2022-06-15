@@ -34,6 +34,7 @@ let _pomodoro = {
     _sessoes: gerarSessoes
   }
 };
+let btipo = 'foco';
 
 // ----------------
 onload = function () {
@@ -44,6 +45,7 @@ onload = function () {
 function setFocoModo() {
   setColors('foco');
   renderizaTimerTela(_pomodoro._pomofoco);
+  mudarButtonAcao('foco');
   btn_acao.removeEventListener('click', iniciarPausaPomodoro);
   btn_acao.addEventListener('click', iniciarFocoPomodoro);
 }
@@ -51,6 +53,7 @@ function setFocoModo() {
 function setPausaModo() {
   setColors('pausa');
   renderizaTimerTela(_pomodoro._pomopausa);
+  mudarButtonAcao('foco');
   btn_acao.removeEventListener('click', iniciarFocoPomodoro);
   btn_acao.addEventListener('click', iniciarPausaPomodoro);
 }
@@ -60,7 +63,12 @@ function setPausaModo() {
 function iniciarFocoPomodoro() {
   if (_pomodoro._pomosessoes._sessoes_ativas > 0) {
     if (!_pomodoro._pomofoco.active) {
-      mudarButtonAcao('foco');
+      //
+      btn_acao.removeEventListener('click', iniciarFocoPomodoro);
+      btn_acao.addEventListener('click', pararTimerMudarModo);
+      btipo = 'foco';
+      //
+      mudarButtonAcao('pausa');
       _pomodoro._pomofoco.active = true;
       // serializando e deserializando o _pomodoro._pomofoco para passar apenas o valor, e nao alterar o objeto em si
       timeInterval = setInterval(
@@ -75,6 +83,11 @@ function iniciarFocoPomodoro() {
 
 function iniciarPausaPomodoro() {
   if (!_pomodoro._pomopausa.active) {
+    //
+    btn_acao.removeEventListener('click', iniciarPausaPomodoro);
+    btn_acao.addEventListener('click', pararTimerMudarModo);
+    btipo = 'pausa';
+    //
     mudarButtonAcao('pausa');
     _pomodoro._pomopausa.active = true;
     // _pomodoro._pomofoco.active = false;
@@ -95,7 +108,7 @@ function timerExibe(_pomo_mostrador, tipo) {
         setPausaModo();
       } else if (tipo === 'pausa') {
         _pomodoro._pomopausa.active = false;
-        _pomodoro._pomosessoes._sessoes_ativas -= 1;
+        decrementarSessao();
         setFocoModo();
       }
     }
@@ -177,8 +190,25 @@ function gerarSessoes() {
 
 function mudarButtonAcao(tipo) {
   if (tipo === 'foco') {
-    btn_acao.children[0].setAttribute('src', './assets/pause-media.png');
-  } else {
     btn_acao.children[0].setAttribute('src', './assets/play-media.png');
+  } else {
+    btn_acao.children[0].setAttribute('src', './assets/pause-media.png');
+  }
+}
+
+function decrementarSessao() {
+  _pomodoro._pomosessoes._sessoes_ativas -= 1;
+}
+
+function pararTimerMudarModo() {
+  clearInterval(timeInterval);
+  btn_acao.removeEventListener('click', pararTimerMudarModo);
+  if (btipo === 'foco') {
+    _pomodoro._pomofoco.active = false;
+    setPausaModo();
+  } else {
+    _pomodoro._pomopausa.active = false;
+    decrementarSessao();
+    setFocoModo();
   }
 }
