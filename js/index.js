@@ -73,6 +73,9 @@ function decrementPom(elem) {
 }
 
 campo_mostrador_foco.onchange = function () {
+  if (campo_mostrador_foco.value == '') {
+    campo_mostrador_foco.value = _pomodoro_app.temp_foco;
+  }
   if (parseInt(campo_mostrador_foco.value) > limite_minutos_foco) {
     campo_mostrador_foco.value = limite_minutos_foco;
   }
@@ -82,6 +85,9 @@ campo_mostrador_foco.onchange = function () {
 };
 
 campo_mostrador_pausa.onchange = function () {
+  if (campo_mostrador_pausa.value == '') {
+    campo_mostrador_pausa.value = _pomodoro_app.temp_pausa;
+  }
   if (parseInt(campo_mostrador_pausa.value) > limite_minutos_pausa) {
     campo_mostrador_pausa.value = limite_minutos_pausa;
   }
@@ -91,6 +97,9 @@ campo_mostrador_pausa.onchange = function () {
 };
 
 campo_mostrador_sessoes.onchange = function () {
+  if (campo_mostrador_sessoes.value == '') {
+    campo_mostrador_sessoes.value = _pomodoro_app.temp_sessoes;
+  }
   if (parseInt(campo_mostrador_sessoes.value) > limite_sessoes) {
     campo_mostrador_sessoes.value = limite_sessoes;
   }
