@@ -88,3 +88,24 @@ footer .content a {
   text-decoration: none;
   color: var(--link-color);
 }
+
+/* =================================================MEDIA*/
+
+@media (min-width: 1024px) {
+  body {
+    overflow: auto;
+  }
+
+  header {
+    flex-direction: row;
+  }
+
+  .wrapper {
+    /* conforme figma, como se fosse o .content */
+    width: min(112rem, 100%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

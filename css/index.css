@@ -126,3 +126,14 @@ input[type='number'] {
 .btn-continuar a:active {
   text-decoration: none;
 }
+
+/* ========================= MEDIA */
+
+@media (min-width: 1024px) {
+  #opcoes .opcoes-pomodoro {
+    width: 60rem;
+    flex-direction: row;
+    gap: 5rem;
+    flex-wrap: wrap;
+  }
+}
