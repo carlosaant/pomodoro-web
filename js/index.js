@@ -100,8 +100,17 @@ campo_mostrador_sessoes.onchange = function () {
 };
 
 function salvarDados() {
-  _pomodoro_app.temp_foco = campo_mostrador_foco.value;
-  _pomodoro_app.temp_pausa = campo_mostrador_pausa.value;
-  _pomodoro_app.temp_sessoes = campo_mostrador_sessoes.value;
+  _pomodoro_app.temp_foco =
+    typeof parseInt(campo_mostrador_foco.value) == 'number'
+      ? campo_mostrador_foco.value
+      : _pomodoro_app.temp_foco;
+  _pomodoro_app.temp_pausa =
+    typeof parseInt(campo_mostrador_pausa.value) == 'number'
+      ? campo_mostrador_pausa.value
+      : _pomodoro_app.temp_pausa;
+  _pomodoro_app.temp_sessoes =
+    typeof parseInt(campo_mostrador_sessoes.value) == 'number'
+      ? campo_mostrador_sessoes.value
+      : _pomodoro_app.temp_sessoes;
   localStorage.setItem('configPomo', JSON.stringify(_pomodoro_app));
 }
