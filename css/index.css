@@ -85,8 +85,7 @@ input[type='number'] {
   color: var(--text-color);
 
   background-color: var(--secondary-color);
-  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.8);
-  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.1);
 }
 .temporizador input[type='number']:focus {
   /* box-shadow: 0 0 0 0; */
@@ -104,14 +103,11 @@ input[type='number'] {
   background-color: var(--secondary-color);
   border: none;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.8);
-  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 5px 2px rgba(0, 0, 0, 0.1);
 
-  opacity: 0.8;
   transition: all 0.3s;
 }
 .btn-continuar:hover {
-  opacity: 1;
   transform: scale(1.1);
 }
 .btn-continuar a {
