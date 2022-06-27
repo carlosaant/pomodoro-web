@@ -2,7 +2,7 @@
 <p align="center">
     <img src="https://i.imgur.com/bSVdIck.pngf" alt="Logo" width="1000">
 
-  <h3 align="center">Pomodoro by <a href="https://github.com/Lorenalgm">Lorena</a></h3>
+  <h3 align="center">PROJETO EM FUNCIONAMENTO <a href="https://carlosaant.github.io/pomodoro-web/">Pomodoro Web APP</a></h3>
  <br />
   <p align="center">
      Cronômetro pomodoro para gerenciamento de tempo
@@ -28,6 +28,7 @@ O desafio é criar um cronômetro que utiliza a técnica do pomodoro para ajudar
 ## Desenvolvimento
 
 O Projeto foi desenvolvido utilizando Mobile First, seguindo as boas praticas e utilizando Variaveis em CSS e desenvolvendo o JavaScript utilizando Obejtos e armazenamento em LocalStorage, com validações e reutilização de código.
+Seu funcionamento se da por sessão com Foco e Pausa, ao parar um foco, inicia uma pausa e assim por diante.
 
 # Techs:
 
